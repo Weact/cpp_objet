@@ -1,5 +1,7 @@
 #include <iostream>
-#include "vect3.h";
+#include "vect3.h"
+#include "vect2.h"
+
 using namespace std;
 
 int main()
@@ -58,4 +60,51 @@ int main()
     vecResult.affiche();
 
     cout << "###########################" << endl;
+
+    vect2<float> vd1(7.f, 6.f);
+    vect2<float> vd2(5.f, 3.f);
+    vect2<float> vd3(5.f, 3.f);
+    vect2<float> vd4(9.f, 7.f);
+
+    vect2<float> vdresult(0.f, 0.f);
+
+    float scalairev2 = 0.f;
+    float mixproductv2 = 0.f;
+
+    cout << vd1;
+    vd1.affiche();
+
+    cout << vd2;
+    vd2.affiche();
+
+    cout << vd3;
+    vd3.affiche();
+
+    cout << vd4;
+    vd4.affiche();
+
+    cout << vdresult;
+    vdresult.affiche();
+
+    cout << "vd2 coincide with vd3 : " << coincide(vd2, vd3) << endl;
+
+    cout << "###########################" << endl;
+
+    vdresult = vd1 + vd2;
+    cout << vdresult;
+    vdresult.affiche();
+
+    vdresult = vd1 - vd2;
+    cout << vdresult;
+    vdresult.affiche();
+
+    vdresult = vd1 * vd2;
+    cout << "SCALAR PRODUCT OF VD1 BY VD2 : " << vdresult;
+    vdresult.affiche();
+
+    scalairev2 = scalarproduct(vd1, vd2);
+    cout << "COEFFICIENT SCALAIRE " << scalairev2 << endl;
+
+    mixproductv2 = mixproduct(vd1, vd2, vd4);
+    cout << "PRODUIT MIXTE VD1 VD2 VD4 " << mixproductv2 << endl;
 }

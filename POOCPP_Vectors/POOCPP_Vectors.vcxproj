@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="POOCPP_Vectors.cpp" />
+    <ClCompile Include="vect2.cpp" />
     <ClCompile Include="vect3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="vect2.h" />
     <ClInclude Include="vect3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

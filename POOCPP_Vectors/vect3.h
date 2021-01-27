@@ -4,10 +4,10 @@ using namespace std;
 
 template <class T> class vect3
 {
-private:
-	float m_fX, m_fY, m_fZ;
+protected:
+	T m_fX, m_fY, m_fZ;
 public:
-	vect3(T x, T y, T z);
+	vect3(T x = 0, T y = 0, T z = 0);
 	vect3(const vect3<T>& vcopy);
 
 	void setX(T x);
@@ -26,20 +26,8 @@ public:
 	template <class T>
 	friend bool operator==(const vect3<T> v1, const vect3<T> v2); //COINCIDE
 
-	vect3<T> operator=(vect3<T> v) { //ASSIGNATION
-		this->setX(v.getX());
-		this->setY(v.getY());
-		this->setZ(v.getZ());
-		return *this;
-	}
-	vect3 operator+(const vect3<T>& v1) { //ADDITION VECTORIELLE
-		vect3<T> vectResult(0.f, 0.f, 0.f);
-		vectResult.setX(this->getX() + v1.getX());
-		vectResult.setY(this->getY() + v1.getY());
-		vectResult.setZ(this->getZ() + v1.getZ());
-		
-		return vectResult;
-	}
+	vect3<T> operator=(vect3<T> v); //ASSIGNATION
+	vect3 operator+(const vect3<T>& v1); //ADDITION VECTORIELLE
 	vect3 operator-(const vect3<T>& v1) { //SOUSTRACTION VECTORIELLE
 		vect3<T> vectResult(0.f, 0.f, 0.f);
 		vectResult.setX(this->getX() - v1.getX());
@@ -63,7 +51,7 @@ public:
 		return vectResult;
 	}
 	friend ostream& operator<<(ostream& os, const vect3<T> v){
-		os << "VECTOR 3 DIMENSIONS : " << v.getX() << ", " << v.getY() << ", " << v.getZ() << endl;
+		os << "VECTOR 3D DIMENSIONS : " << v.getX() << ", " << v.getY() << ", " << v.getZ() << endl;
 		return os;
 	}
 };
@@ -109,6 +97,24 @@ inline T vect3<T>::getY() const {
 template<class T>
 inline T vect3<T>::getZ() const{
 	return this->m_fZ;
+}
+
+//OPERATORS
+template<class T>
+vect3<T> vect3<T>::operator=(vect3<T> v) { //ASSIGNATION
+	this->setX(v.getX());
+	this->setY(v.getY());
+	this->setZ(v.getZ());
+	return *this;
+}
+template<class T>
+vect3<T> vect3<T>::operator+(const vect3<T>& v1) { //ADDITION VECTORIELLE
+	vect3<T> vectResult(0.f, 0.f, 0.f);
+	vectResult.setX(this->getX() + v1.getX());
+	vectResult.setY(this->getY() + v1.getY());
+	vectResult.setZ(this->getZ() + v1.getZ());
+
+	return vectResult;
 }
 
 //METHODS
