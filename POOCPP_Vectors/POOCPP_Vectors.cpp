@@ -1,12 +1,15 @@
 #include <iostream>
 #include "vect3.h"
 #include "vect2.h"
+#include "VectorsContainer.h"
 
 using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Hello World!\n";
+
+    VectorsContainer<vect3<float>, 5> monContainer;
 
     float scalaire = 0.f;
     float produitmixte = 0.f;
@@ -107,4 +110,18 @@ int main()
 
     mixproductv2 = mixproduct(vd1, vd2, vd4);
     cout << "PRODUIT MIXTE VD1 VD2 VD4 " << mixproductv2 << endl;
+
+
+    // ### CONTAINER ###
+
+    monContainer[0] = vec1;
+    monContainer[1] = vd1;
+    monContainer[2] = vec2;
+    monContainer[3] = vd2;
+    monContainer[4] = vec3;
+
+    for (int i = 0; i < 5; i++) {
+        monContainer[i].affiche();
+    }
+
 }

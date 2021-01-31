@@ -28,28 +28,9 @@ public:
 
 	vect3<T> operator=(vect3<T> v); //ASSIGNATION
 	vect3 operator+(const vect3<T>& v1); //ADDITION VECTORIELLE
-	vect3 operator-(const vect3<T>& v1) { //SOUSTRACTION VECTORIELLE
-		vect3<T> vectResult(0.f, 0.f, 0.f);
-		vectResult.setX(this->getX() - v1.getX());
-		vectResult.setY(this->getY() - v1.getY());
-		vectResult.setZ(this->getZ() - v1.getZ());
-
-		return vectResult;
-	}
-	vect3 operator*(T coeff) { //multiplication d'un vecteur par un scalaire
-		vect3 vectResult(0.f, 0.f, 0.f);
-		vectResult.m_fX = this->m_fX * coeff;
-		vectResult.m_fY = this->m_fY * coeff;
-		vectResult.m_fZ = this->m_fZ * coeff;
-		return vectResult;
-	}
-	vect3 operator*(const vect3& v) { //PRODUIT VECTORIEL
-		vect3 vectResult(0.f, 0.f, 0.f);
-		vectResult.m_fX = this->m_fY * v.m_fZ - this->m_fZ * v.m_fY;
-		vectResult.m_fY = this->m_fZ * v.m_fX - this->m_fX * v.m_fZ;
-		vectResult.m_fZ = this->m_fX * v.m_fY - this->m_fY * v.m_fX;
-		return vectResult;
-	}
+	vect3 operator-(const vect3<T>& v1);//SOUSTRACTION VECTORIELLE
+	vect3 operator*(T coeff);//multiplication d'un vecteur par un scalaire
+	vect3 operator*(const vect3& v);//PRODUIT VECTORIEL
 	friend ostream& operator<<(ostream& os, const vect3<T> v){
 		os << "VECTOR 3D DIMENSIONS : " << v.getX() << ", " << v.getY() << ", " << v.getZ() << endl;
 		return os;
@@ -114,6 +95,31 @@ vect3<T> vect3<T>::operator+(const vect3<T>& v1) { //ADDITION VECTORIELLE
 	vectResult.setY(this->getY() + v1.getY());
 	vectResult.setZ(this->getZ() + v1.getZ());
 
+	return vectResult;
+}
+template<class T>
+vect3<T> vect3<T>::operator-(const vect3<T>& v1) { //SOUSTRACTION VECTORIELLE
+	vect3<T> vectResult(0.f, 0.f, 0.f);
+	vectResult.setX(this->getX() - v1.getX());
+	vectResult.setY(this->getY() - v1.getY());
+	vectResult.setZ(this->getZ() - v1.getZ());
+
+	return vectResult;
+}
+template<class T>
+vect3<T> vect3<T>::operator*(T coeff) { //multiplication d'un vecteur par un scalaire
+	vect3 vectResult(0.f, 0.f, 0.f);
+	vectResult.m_fX = this->m_fX * coeff;
+	vectResult.m_fY = this->m_fY * coeff;
+	vectResult.m_fZ = this->m_fZ * coeff;
+	return vectResult;
+}
+template<class T>
+vect3<T> vect3<T>::operator*(const vect3& v) { //PRODUIT VECTORIEL
+	vect3 vectResult(0.f, 0.f, 0.f);
+	vectResult.m_fX = this->m_fY * v.m_fZ - this->m_fZ * v.m_fY;
+	vectResult.m_fY = this->m_fZ * v.m_fX - this->m_fX * v.m_fZ;
+	vectResult.m_fZ = this->m_fX * v.m_fY - this->m_fY * v.m_fX;
 	return vectResult;
 }
 

@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="vect2.h" />
     <ClInclude Include="vect3.h" />
+    <ClInclude Include="VectorsContainer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
