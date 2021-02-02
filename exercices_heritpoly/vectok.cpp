@@ -2,7 +2,7 @@
 
 vectok::vectok(int t) : vect(t) { taille = t; }
 
-vectok::vectok(const vectok& vokcpy): vect(vokcpy)
+vectok::vectok(const vectok& vokcpy)
 {
 	taille = vokcpy.nelem;
 	adr = new int[nelem = vokcpy.nelem];
